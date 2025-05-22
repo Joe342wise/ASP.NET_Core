@@ -1,4 +1,5 @@
 using GameStore.API.Dtos;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,22 @@ app.MapPost("/games", (CreateCameDto newGame) => {
     games.Add(game);
 
     return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id}, game);
+});
+
+// PUT /games
+app.MapPut("/games/{id}", (int id, UpdateGameDto updateGame) => {
+    var index = games.FindIndex(g => g.Id == id);
+    if (index == -1) return Results.NotFound();
+
+    games[index] = new GameDto(
+        id,
+        updateGame.Name,
+        updateGame.Genre,
+        updateGame.Price,
+        updateGame.ReleaseDate
+    );
+
+    return Results.NoContent();
 });
 
 // app.MapGet("/", () => "Hello World!");
