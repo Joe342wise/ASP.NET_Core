@@ -19,7 +19,14 @@ List<GameDto> games = [
 app.MapGet("/games", () => games);
 
 // GET /games/{id}
-app.MapGet("/games/{id}", (int id) => games.FirstOrDefault(g => g.Id == id)).WithName(GetGameEndpointName);
+app.MapGet("/games/{id}", (int id) => 
+{
+    GameDto? game = games.FirstOrDefault(g => g.Id == id);
+    if (game == null) return Results.NotFound();
+
+    return Results.Ok(game);
+})
+.WithName(GetGameEndpointName);
 
 // POST /games
 app.MapPost("/games", (CreateCameDto newGame) => {
