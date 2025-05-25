@@ -8,7 +8,7 @@ POST http://localhost:5029/games
 Content-Type: application/json
 
 {
-    "name": "The Witcher 3",
+    "name": "The Witcher 4",
     "genre": "Action RPG",
     "price": 59.99,
     "releaseDate": "2015-05-19"
@@ -21,7 +21,7 @@ Content-Type: application/json
 {
     "name": "The Witcher 4",
     "genre": "Action RPG",
-    "price": 69.99,
+    "price": 100,
     "releaseDate": "2022-02-25"
 }
 
