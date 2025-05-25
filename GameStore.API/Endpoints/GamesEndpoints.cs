@@ -15,12 +15,13 @@ public static class GamesEndpoints
         new (5, "The Last of Us Part II", "Action Adventure", 59.99m, new DateOnly(2020, 6, 19)),
     ];
 
-    public static WebApplication MapGamesEndpoints(this WebApplication app){
+    public static RouteGroupBuilder MapGamesEndpoints(this RouteGroupBuilder gamesGroup){
+
         // GET /games
-        app.MapGet("/games", () => games);
+        gamesGroup.MapGet("/", () => games);
 
         // GET /games/{id}
-        app.MapGet("/games/{id}", (int id) => 
+        gamesGroup.MapGet("/{id}", (int id) => 
         {
             GameDto? game = games.FirstOrDefault(g => g.Id == id);
             if (game == null) return Results.NotFound();
@@ -30,7 +31,7 @@ public static class GamesEndpoints
         .WithName(GetGameEndpointName);
 
         // POST /games
-        app.MapPost("/games", (CreateCameDto newGame) => {
+        gamesGroup.MapPost("/", (CreateCameDto newGame) => {
             GameDto game = new(
                 games.Count + 1,
                 newGame.Name,
@@ -44,7 +45,7 @@ public static class GamesEndpoints
         });
 
         // PUT /games
-        app.MapPut("/games/{id}", (int id, UpdateGameDto updateGame) => {
+        gamesGroup.MapPut("/{id}", (int id, UpdateGameDto updateGame) => {
             var index = games.FindIndex(g => g.Id == id);
             if (index == -1) return Results.NotFound();
 
@@ -60,13 +61,13 @@ public static class GamesEndpoints
         });
 
         // Delete /games/1
-        app.MapDelete("games/{id}", (int id) => {
+        gamesGroup.MapDelete("/{id}", (int id) => {
             games.RemoveAll(game => game.Id == id);
 
                     return Results.NoContent();
-                });
+        });
 
-        return app;
+        return gamesGroup;
     }
 
 }
