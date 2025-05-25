@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
-
 var connectionString = builder.Configuration.GetConnectionString("GameStoreConnection");
 builder.Services.AddSqlite<GameStoreContext>(connectionString);
+
+var app = builder.Build();
 
 // app.MapGet("/", () => "Hello World!");
 
