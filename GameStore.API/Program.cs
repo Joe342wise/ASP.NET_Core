@@ -8,6 +8,6 @@ var app = builder.Build();
 
 // app.MapGet("/", () => "Hello World!");
 
-app.MapGroup("/games").MapGamesEndpoints();
+app.MapGroup("/games").MapGamesEndpoints().WithParameterValidation();
 
 app.Run();
