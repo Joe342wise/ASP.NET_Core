@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OPm1ecuM71k=",
+  "dgSpecHash": "o8g3OMEDCdE=",
   "success": true,
   "projectFilePath": "D:\\Projects\\ASP.NET_Core\\GameStore.API\\GameStore.API.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.5\\microsoft.entityframeworkcore.relational.9.0.5.nupkg.sha512",
     "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\9.0.5\\microsoft.entityframeworkcore.sqlite.9.0.5.nupkg.sha512",
     "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\9.0.5\\microsoft.entityframeworkcore.sqlite.core.9.0.5.nupkg.sha512",
+    "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.5\\microsoft.entityframeworkcore.tools.9.0.5.nupkg.sha512",
     "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.5\\microsoft.extensions.caching.abstractions.9.0.5.nupkg.sha512",
     "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.5\\microsoft.extensions.caching.memory.9.0.5.nupkg.sha512",
     "C:\\Users\\jnyar\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.5\\microsoft.extensions.configuration.abstractions.9.0.5.nupkg.sha512",
