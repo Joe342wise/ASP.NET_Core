@@ -15,4 +15,6 @@ builder.Services.AddSqlite<GameStoreContext>(connectionString);
 
 app.MapGroup("/games").MapGamesEndpoints().WithParameterValidation();
 
+app.MigrateDb();
+
 app.Run();
