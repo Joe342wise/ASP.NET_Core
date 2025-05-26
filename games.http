@@ -15,14 +15,14 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:5029/games/1
+PUT http://localhost:5029/games/6
 Content-Type: application/json
 
 {
-    "name": "The Witcher 4",
-    "genre": "Action RPG",
+    "name": "The Last of Us Part II",
+    "genreId": 1,
     "price": 100,
-    "releaseDate": "2022-02-25"
+    "releaseDate": "2020-06-19"
 }
 
 ###

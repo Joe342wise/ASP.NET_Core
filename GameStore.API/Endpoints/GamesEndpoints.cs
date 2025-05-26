@@ -44,17 +44,12 @@ public static class GamesEndpoints
         });
 
         // PUT /games
-        gamesGroup.MapPut("/{id}", (int id, UpdateGameDto updateGame) => {
-            var index = games.FindIndex(g => g.Id == id);
-            if (index == -1) return Results.NotFound();
+        gamesGroup.MapPut("/{id}", (int id, UpdateGameDto updateGame, GameStoreContext dbContext) => {
+            Game? game = dbContext.Games.Find(id);
+            if (game == null) return Results.NotFound();
 
-            games[index] = new GameDto(
-                id,
-                updateGame.Name,
-                updateGame.Genre,
-                updateGame.Price,
-                updateGame.ReleaseDate
-            );
+            game = updateGame.ToEntity(id);
+            dbContext.SaveChanges();
 
             return Results.NoContent();
         });
