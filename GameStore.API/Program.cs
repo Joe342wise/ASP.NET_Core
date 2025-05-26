@@ -14,6 +14,7 @@ var app = builder.Build();
 // app.MapGet("/", () => "Hello World!");
 
 app.MapGroup("/games").MapGamesEndpoints().WithParameterValidation();
+app.MapGroup("/genres").MapGenreEndpoints();
 
 await app.MigrateDbAsync();
 
