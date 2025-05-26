@@ -15,6 +15,6 @@ var app = builder.Build();
 
 app.MapGroup("/games").MapGamesEndpoints().WithParameterValidation();
 
-app.MigrateDb();
+await app.MigrateDbAsync();
 
 app.Run();
