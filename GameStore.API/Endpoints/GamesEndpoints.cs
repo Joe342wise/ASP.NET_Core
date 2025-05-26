@@ -24,24 +24,23 @@ public static class GamesEndpoints
         gamesGroup.MapGet("/", () => games);
 
         // GET /games/{id}
-        gamesGroup.MapGet("/{id}", (int id) => 
+        gamesGroup.MapGet("/{id}", (int id, GameStoreContext dbContext) => 
         {
-            GameDto? game = games.FirstOrDefault(g => g.Id == id);
+            Game? game = dbContext.Games.Find(id);
             if (game == null) return Results.NotFound();
 
-            return Results.Ok(game);
+            return Results.Ok(game.ToGameDetailsDto());
         })
         .WithName(GetGameEndpointName);
 
         // POST /games
         gamesGroup.MapPost("/", (CreateCameDto newGame, GameStoreContext dbContext) => {
             Game game = newGame.ToEntity();
-            game.Genre = dbContext.Genres.Find(newGame.GenreId) ?? throw new Exception("Genre not found");
             
             dbContext.Games.Add(game);
             dbContext.SaveChanges();
             
-            return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id}, game.ToDto());
+            return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id}, game.ToGameDto());
         });
 
         // PUT /games
