@@ -32,7 +32,7 @@ public static class GameMapping
         return new GameDto(
             game.Id,
             game.Name,
-            game.Genre!.Name,
+            game.Genre?.Name ?? "Unknown",
             game.Price,
             game.ReleaseDate
         );
